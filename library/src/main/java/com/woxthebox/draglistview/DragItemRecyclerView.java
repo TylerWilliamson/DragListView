@@ -21,9 +21,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -317,7 +317,7 @@ public class DragItemRecyclerView extends RecyclerView implements AutoScroller.A
                 mDragItemPosition = newPos;
 
                 // Since notifyItemMoved scrolls the list we need to scroll back to where we were after the position change.
-                if (layoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
+                if (layoutManager.getOrientation() == RecyclerView.VERTICAL) {
                     int topMargin = ((MarginLayoutParams) posView.getLayoutParams()).topMargin;
                     layoutManager.scrollToPositionWithOffset(pos, posView.getTop() - topMargin);
                 } else {
@@ -337,7 +337,7 @@ public class DragItemRecyclerView extends RecyclerView implements AutoScroller.A
         ViewHolder firstChild = findViewHolderForLayoutPosition(0);
 
         // Check if first or last item has been reached
-        if (layoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
+        if (layoutManager.getOrientation() == RecyclerView.VERTICAL) {
             if (lastChild != null && lastChild.itemView.getBottom() <= bottom) {
                 lastItemReached = true;
             }
@@ -354,7 +354,7 @@ public class DragItemRecyclerView extends RecyclerView implements AutoScroller.A
         }
 
         // Start auto scroll if at the edge
-        if (layoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
+        if (layoutManager.getOrientation() == RecyclerView.VERTICAL) {
             if (mDragItem.getY() > getHeight() - view.getHeight() / 2 && !lastItemReached) {
                 mAutoScroller.startAutoScroll(AutoScroller.ScrollDirection.UP);
             } else if (mDragItem.getY() < view.getHeight() / 2 && !firstItemReached) {

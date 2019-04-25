@@ -39,7 +39,7 @@ def getRepositoryPassword() {
     return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
 }
 
-/*
+
 afterEvaluate { project ->
     uploadArchives {
         repositories {
@@ -88,10 +88,10 @@ afterEvaluate { project ->
         }
     }
 
-    signing {
+    /*signing {
         required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
         sign configurations.archives
-    }
+    }*/
 
     //task androidJavadocs(type: Javadoc) {
     //source = android.sourceSets.main.allJava
@@ -110,4 +110,4 @@ afterEvaluate { project ->
     artifacts {
         archives androidSourcesJar
     }
-}*/
+}
